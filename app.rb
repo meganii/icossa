@@ -14,6 +14,6 @@ get '/' do
 end
 
 get '/create' do
-  post = Post.create(:user => "meganii",:create_at => Time.now)
-  "Post.createに成功" unless post.nil?
+  post = Post.create(:user => params[:user],:create_at => Time.now)
+  "#{params[:user]}"
 end
