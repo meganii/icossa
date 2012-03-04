@@ -9,6 +9,10 @@ class Post
   auto_upgrade!
 end
 
+use Rack::Auth::Basic do |user, pass|
+  user == ENV['BASIC_USER'] && pass == ENV['BASIC_PASS']
+end
+
 get '/' do
   @post = Post.all.map{|r| "#{r.id}, #{r.user},#{r.create_at} <br />"} 
   erb :index
