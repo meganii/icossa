@@ -9,8 +9,10 @@ class Post
   auto_upgrade!
 end
 
-use Rack::Auth::Basic do |user, pass|
-  user == ENV['BASIC_USER'] && pass == ENV['BASIC_PASS']
+configure :production do
+  use Rack::Auth::Basic do |user, pass|
+    user == ENV['BASIC_USER'] && pass == ENV['BASIC_PASS']
+  end
 end
 
 get '/' do
