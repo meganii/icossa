@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-DataMapper.setup(:default, 'sqlite3:db.sqlite3')
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3:db.sqlite3')
 
 class Post
   include DataMapper::Resource
